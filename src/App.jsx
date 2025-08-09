@@ -107,11 +107,11 @@ const GhostButton = ({ children, href = "#portfolio" }) => (
 // ---------- Sticky socials ----------
 const StickySocials = () => (
   <div className="fixed right-4 bottom-4 flex flex-col gap-3 z-50">
-    <a href="#" aria-label="Facebook"
+    <a href="https://www.facebook.com/profile.php?id=61572591066011" aria-label="Facebook"
        className="p-3 rounded-full bg-[var(--panel)] border border-black/10 dark:border-white/10 shadow hover:shadow-lg transition">
       <Facebook className="h-5 w-5 text-[var(--accent-1)]" />
     </a>
-    <a href="#" aria-label="Instagram"
+    <a href="https://www.instagram.com/gravirlab/" aria-label="Instagram"
        className="p-3 rounded-full bg-[var(--panel)] border border-black/10 dark:border-white/10 shadow hover:shadow-lg transition">
       <Instagram className="h-5 w-5 text-[var(--accent-2)]" />
     </a>
@@ -345,11 +345,10 @@ const Footer = () => (
         <div className="flex items-center gap-4">
           <a href="#contact" className="hover:text-[var(--text)]">Kontakt</a>
           <a href="#top" className="hover:text-[var(--text)]">Nahoru</a>
-          {/* Až budeš mít URL, doplň je sem: */}
-          <a href="#" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 hover:text-[var(--text)]">
+          <a href="https://www.facebook.com/profile.php?id=61572591066011" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 hover:text-[var(--text)]">
             <Facebook className="h-4 w-4" /> Facebook
           </a>
-          <a href="#" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 hover:text-[var(--text)]">
+          <a href="https://www.instagram.com/gravirlab/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 hover:text-[var(--text)]">
             <Instagram className="h-4 w-4" /> Instagram
           </a>
         </div>
@@ -423,7 +422,6 @@ export default function App() {
           </ul>
           <div className="mt-6 flex flex-wrap justify-center gap-3 text-sm">
             <div className="inline-flex items-center gap-2 rounded-xl px-3 py-2 bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10"><Mail className="h-4 w-4" /> gravirlab@gmail.com</div>
-            {/*<div className="inline-flex items-center gap-2 rounded-xl px-3 py-2 bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10"><Phone className="h-4 w-4" /> +420 777 000 000</div>*/}
           </div>
         </div>
       </Section>
