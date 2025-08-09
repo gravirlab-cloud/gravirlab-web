@@ -395,7 +395,7 @@ export default function App() {
       { title: "Poptávka", desc: "Popište představu, rozměry a množství." },
       { title: "Návrh a kalkulace", desc: "Pošlu vizualizaci a cenu ke schválení." },
       { title: "Výroba", desc: "Spouštím laser – průběžně informuji." },
-      { title: "Předání", desc: "Osobně v Praze/zaslání kurýrem. Faktura nebo účtenka." },
+      { title: "Předání", desc: "Zasílám přes Zásilkovnu, PPL nebo DPD" },
     ].map((s, i) => (
       <div
         key={i}
