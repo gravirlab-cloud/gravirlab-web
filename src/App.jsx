@@ -380,7 +380,7 @@ export default function App() {
         </div>
       </Section>
 
-      <Section id="portfolio" eyebrow="Portfolio" title="Ukázky realizací" subtitle="Reálné zakázky a vzorky. Fotky můžete nahradit vlastními.">
+      <Section id="portfolio" eyebrow="Portfolio" title="Ukázky realizací" subtitle=" Ukázka reálných zakázek a vzorků.">
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
           {["Dárková krabička – gravura na víku", "Cedule na dveře", "Mapa hvězd – bříza", "Podtácky – sada 6 ks"].map((l, i) => (
             <PortfolioItem key={i} label={l} />
