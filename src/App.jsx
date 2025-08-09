@@ -299,6 +299,21 @@ const ContactForm = () => {
           <input name="phone" placeholder="+420 777 000 000" className={inputBase} />
         </div>
 
+        <div className="flex flex-col gap-2">
+          <label className="text-sm text-[var(--muted)]">Preferované doručení *</label>
+          <select
+            required
+            name="delivery"
+            className={inputBase}
+          >
+            <option value="">-- Vyberte --</option>
+            <option value="Zásilkovna">Zásilkovna</option>
+            <option value="DPD">DPD</option>
+            <option value="PPL">PPL</option>
+            <option value="Osobní odběr">Osobní odběr</option>
+          </select>
+        </div>
+
         <div className="md:col-span-2 flex flex-col gap-2">
           <label className="text-sm text-[var(--muted)]">Popis zakázky *</label>
           <textarea
@@ -416,9 +431,9 @@ export default function App() {
       <Section id="about" eyebrow="O nás" title="Poctivé řemeslo, moderní technologie" subtitle="Malé studio s důrazem na osobní přístup a detail.">
         <div className="max-w-3xl mx-auto text-center">
           <ul className="space-y-3 text-[var(--muted)]">
-            <li className="flex gap-3 justify-center"><CheckCircle2 className="h-5 w-5 text-[var(--success)] mt-0.5" /> Specializace na dřevěnou překližku (bříza, dub)</li>
-            <li className="flex gap-3 justify-center"><CheckCircle2 className="h-5 w-5 text-[var(--success)] mt-0.5" /> Osobní přístup a pečlivé doladění detailů</li>
-            <li className="flex gap-3 justify-center"><CheckCircle2 className="h-5 w-5 text-[var(--success)] mt-0.5" /> Náhled před výrobou a možnost personalizace</li>
+            <li className="flex gap-3 justify-center"><CheckCircle2 className="h-5 w-5 text-[var(--success)] mt-0.5" /> Specializuji se na gravírování do překližky – bříza, dub, buk a topol.</li>
+            <li className="flex gap-3 justify-center"><CheckCircle2 className="h-5 w-5 text-[var(--success)] mt-0.5" /> Osobní přístup a pečlivé doladění detailů.</li>
+            <li className="flex gap-3 justify-center"><CheckCircle2 className="h-5 w-5 text-[var(--success)] mt-0.5" /> Náhled před výrobou a možnost personalizace.</li>
           </ul>
           <div className="mt-6 flex flex-wrap justify-center gap-3 text-sm">
             <div className="inline-flex items-center gap-2 rounded-xl px-3 py-2 bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10"><Mail className="h-4 w-4" /> gravirlab@gmail.com</div>
