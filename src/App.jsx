@@ -131,7 +131,7 @@ const Nav = () => {
   return (
     <div className="fixed top-4 left-0 right-0 z-50">
       <Container>
-        <div className="rounded-2xl border border-black/10 dark:border-white/10 bg-[var(--panel)]/90 backdrop-blur supports-[backdrop-filter]:bg-[var(--panel)]/80 px-4 py-3 flex items-center justify-between shadow-xl">
+        <div className=" rounded-2xl border border-black/10 dark:border-white/10 bg-[var(--panel)]/90 backdrop-blur supports-[backdrop-filter]:bg-[var(--panel)]/80 px-4 py-3 flex items-center justify-between shadow-xl">
           <a href="#top" className="flex items-center gap-3">
             <img src={logo} alt="Gravirlab logo" className="h-12 w-12 object-contain rounded-xl" />
             <div className="leading-tight">
@@ -193,13 +193,13 @@ const Hero = () => (
   <section id="top" className="relative overflow-hidden">
     <div className="absolute inset-0 -z-10" style={{ background: "var(--grad-2)", backgroundColor: "var(--bg)" }} />
     <Container className="pt-36 sm:pt-40 pb-16">
-      <div className="grid items-center gap-12 lg:grid-cols-2">
+      <div className=" grid items-center gap-12 lg:grid-cols-2">
         <div>
           <motion.h1 initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: .6 }}
             className="text-4xl sm:text-6xl font-semibold text-[var(--text)] leading-tight">
             Přenáším <span className="bg-clip-text text-transparent bg-gradient-to-br from-[var(--accent-3)] to-[var(--accent-2)]">vaše nápady</span> do překližky
           </motion.h1>
-          <p className="mt-5 text-[var(--muted)] text-lg max-w-xl">
+          <p className=" mt-5 text-[var(--muted)] text-lg max-w-xl">
             Precizní laserové gravírování z dřevěné překližky. Kusovky i malé série, návrh motivu a konzultace zdarma.
           </p>
           <div className="mt-8 flex flex-wrap items-center gap-3">
@@ -216,10 +216,10 @@ const Hero = () => (
 
         {/* Visual card */}
         <motion.div initial={{ opacity: 0, scale: .96 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: .6, delay: .1 }} className="relative">
-          <div className="relative rounded-3xl overflow-hidden border border-black/10 dark:border-white/10 bg-[var(--panel)] shadow-2xl">
-            <div className="aspect-[4/3] w-full grid place-items-center">
-              <div className="w-5/6 h-5/6 rounded-2xl border border-black/10 dark:border-white/10 bg-gradient-to-br from-black/5 dark:from-white/10 to-black/0 relative overflow-hidden">
-                <div className="absolute inset-0 opacity-20 dark:opacity-30" style={{
+          <div className=" relative rounded-3xl overflow-hidden border border-black/10 dark:border-white/10 bg-[var(--panel)] shadow-2xl">
+            <div className=" border border-gray-400 rounded-xl aspect-[4/3] w-full grid place-items-center">
+              <div className="w-5/6 h-5/6  rounded-2xl border border-black/10 dark:border-white/10 bg-gradient-to-br from-black/5 dark:from-white/10 to-black/0 relative overflow-hidden">
+                <div className=" absolute inset-0 opacity-20 dark:opacity-30" style={{
                   backgroundImage: `radial-gradient(circle at 20% 20%, currentColor 1px, transparent 1px), radial-gradient(circle at 70% 60%, currentColor 1px, transparent 1px)`,
                   color: "rgba(0,0,0,0.7)"
                 }} />
@@ -237,7 +237,7 @@ const Hero = () => (
 
 // ---------- Service card ----------
 const ServiceCard = ({ icon: Icon, title, desc }) => (
-  <div className="rounded-2xl p-6 border border-black/10 dark:border-white/10 bg-black/5 dark:bg-white/5 hover:bg-black/10 dark:hover:bg-white/10 transition-colors">
+  <div className="rounded-2xl p-6 border border-black/20 dark:border-white/10 bg-black/5 dark:bg-white/5 hover:bg-black/10 dark:hover:bg-white/10 transition-colors">
     <div className="h-11 w-11 rounded-xl bg-[var(--panel)] grid place-items-center mb-4 border border-black/10 dark:border-white/10">
       <Icon className="h-5 w-5 text-[var(--accent-1)]" />
     </div>
@@ -359,7 +359,7 @@ const Footer = () => (
 
 export default function App() {
   return (
-    <div className="min-h-screen" style={{ backgroundColor: "var(--bg)", color: "var(--text)" }}>
+    <div className=" min-h-screen" style={{ backgroundColor: "var(--bg)", color: "var(--text)" }}>
       <PaletteStyles />
       <head>
         <title>Gravírlab – Gravírování z překližky</title>
@@ -371,9 +371,9 @@ export default function App() {
       <Hero />
 
       <Section id="services" eyebrow="Služby" title="Specialista na překližku" subtitle="Zakázkové gravírování z dřevěné překližky – kusovky i malé série.">
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div className=" grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
           <ServiceCard icon={Hammer} title="Gravírování překližky" desc="Přesná kresba na březové/dubové překližce. Cedulky, jmenovky, dárky, dekorace." />
-          <ServiceCard icon={Palette} title="Návrh motivu" desc="Podklady připravím nebo upravím (SVG, PDF, AI). Náhled před výrobou zdarma." />
+          <ServiceCard icon={Palette} title="Návrh motivu" desc="Podklady připravím nebo upravím (SVG, PDF, AI, PNG nebo JPG). Náhled před výrobou zdarma." />
           <ServiceCard icon={Ruler} title="Kusová výroba i série" desc="Od jednoho kusu po malé série. Stabilní kvalita a opakovatelnost." />
           <ServiceCard icon={Shield} title="Povrchová úprava" desc="Na přání jemné broušení a olej/vosk pro delší životnost." />
           <ServiceCard icon={Clock} title="Standardní termíny" desc="Dodání dle domluvy a složitosti – bez expresních příplatků." />
@@ -382,7 +382,7 @@ export default function App() {
 
       <Section id="portfolio" eyebrow="Portfolio" title="Ukázky realizací" subtitle="Reálné zakázky a vzorky. Fotky můžete nahradit vlastními.">
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-          {["Dárková krabička – gravura na víku", "Cedule na dveře", "Mapa hvězd – bříza", "Podtácky – sada 6 ks", "Štítky na regály", "Logo do dřeva", "Svatba – jmenovky", "Designové hodiny"].map((l, i) => (
+          {["Dárková krabička – gravura na víku", "Cedule na dveře", "Mapa hvězd – bříza", "Podtácky – sada 6 ks"].map((l, i) => (
             <PortfolioItem key={i} label={l} />
           ))}
         </div>
@@ -393,8 +393,8 @@ export default function App() {
     {[
       { title: "Poptávka", desc: "Popište představu, rozměry a množství." },
       { title: "Návrh a kalkulace", desc: "Pošlu vizualizaci a cenu ke schválení." },
-      { title: "Výroba", desc: "Jakmile je platba potvrzena, laser se pouští do práce" },
-      { title: "Předání", desc: "Zasílám přes Zásilkovnu, PPL nebo DPD" },
+      { title: "Výroba", desc: "Jakmile je platba potvrzena, laser se pouští do práce." },
+      { title: "Předání", desc: "Zasílám přes Zásilkovnu, PPL nebo DPD. Po domluvě je možný i osobní odběr." },
     ].map((s, i) => (
       <div
         key={i}
