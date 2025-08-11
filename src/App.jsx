@@ -1,5 +1,7 @@
 // src/App.jsx
 import React from "react";
+import pf1 from './assets/magnetky.jpg';
+import pf2 from './assets/podtacky.jpg';
 import { motion } from "framer-motion";
 import {
   Menu, X, Sparkles, Send, Mail, Phone, Clock, CheckCircle2,
@@ -247,17 +249,131 @@ const ServiceCard = ({ icon: Icon, title, desc }) => (
 );
 
 // ---------- Portfolio item ----------
-const PortfolioItem = ({ label }) => (
-  <div className="group relative aspect-square rounded-2xl overflow-hidden border border-black/10 dark:border-white/10 bg-black/5 dark:bg-white/5">
-    <div className="absolute inset-0 bg-gradient-to-br from-black/10 dark:from-white/10 to-black/0 opacity-0 group-hover:opacity-100 transition-opacity" />
-    <div className="absolute inset-0 grid place-items-center opacity-60">
-      <Palette className="h-10 w-10" />
-    </div>
-    <div className="absolute bottom-0 left-0 right-0 p-3 text-xs text-center text-[var(--muted)] bg-[var(--panel)]/80 backdrop-blur">
+// ---- Portfolio item (kliknutelná karta) ----
+const PortfolioItem = ({ src, label, onOpen }) => (
+  <button
+    type="button"
+    onClick={() => onOpen(src, label)}
+    className="group relative rounded-2xl overflow-hidden border border-black/10 dark:border-white/10 focus:outline-none focus:ring-2 focus:ring-[var(--accent-1)]"
+    aria-label={`Otevřít náhled: ${label}`}
+  >
+    <img src={src} alt={label} className="w-full aspect-square object-cover transition-transform group-hover:scale-[1.02]" />
+    <div className="absolute bottom-0 left-0 right-0 p-3 text-xs text-[var(--muted)] bg-[var(--panel)]/80 backdrop-blur">
       {label}
     </div>
-  </div>
+  </button>
 );
+
+// Lightbox (z-index posílám vysoko, zavírání: klik ven, ✕, Esc, ←/→)
+const Lightbox = ({ open, item, onClose, onPrev, onNext }) => {
+  React.useEffect(() => {
+    if (!open) return;
+    const onKey = (e) => {
+      if (e.key === "Escape") onClose();
+      if (e.key === "ArrowLeft") onPrev();
+      if (e.key === "ArrowRight") onNext();
+    };
+    document.addEventListener("keydown", onKey);
+    return () => document.removeEventListener("keydown", onKey);
+  }, [open, onClose, onPrev, onNext]);
+
+  if (!open) return null;
+
+  return (
+    <div
+      className="fixed inset-0 z-[9999] bg-black/70 backdrop-blur-sm flex items-center justify-center p-4"
+      onClick={onClose}
+      aria-modal="true"
+      role="dialog"
+    >
+      <div
+        className="relative max-w-5xl w-full"
+        onClick={(e) => e.stopPropagation()}
+      >
+        <img src={item.src} alt={item.label} className="w-full h-auto rounded-2xl shadow-2xl" />
+
+        <div className="absolute top-3 right-3 flex items-center gap-2">
+          <span className="hidden sm:block text-xs px-2 py-1 rounded bg-black/60 text-white">
+            {item.label}
+          </span>
+          <button
+            onClick={onClose}
+            aria-label="Zavřít náhled"
+            className="h-9 w-9 grid place-items-center rounded-full bg-black/70 text-white hover:bg-black/80"
+            title="Zavřít (Esc)"
+          >
+            ✕
+          </button>
+        </div>
+
+        <button
+          onClick={onPrev}
+          aria-label="Předchozí"
+          className="absolute left-3 top-1/2 -translate-y-1/2 h-10 w-10 rounded-full bg-black/70 text-white grid place-items-center hover:bg-black/80"
+          title="Předchozí (←)"
+        >‹</button>
+
+        <button
+          onClick={onNext}
+          aria-label="Další"
+          className="absolute right-3 top-1/2 -translate-y-1/2 h-10 w-10 rounded-full bg-black/70 text-white grid place-items-center hover:bg-black/80"
+          title="Další (→)"
+        >›</button>
+      </div>
+    </div>
+  );
+};
+
+// Sekce Portfolio – kliknutelné karty volají open(i)
+const PortfolioSection = () => {
+  const items = [
+    { src: pf1, label: "Magnetky – gravura do překližky" },
+    { src: pf2, label: "Podtácky – různé kusy" },
+  ];
+
+  const [state, setState] = React.useState({ open: false, index: 0 });
+  const open  = (idx) => { setState({ open: true, index: idx }); };
+  const close = ()     => { setState((s) => ({ ...s, open: false })); };
+  const prev  = ()     => { setState((s) => ({ ...s, index: (s.index - 1 + items.length) % items.length })); };
+  const next  = ()     => { setState((s) => ({ ...s, index: (s.index + 1) % items.length })); };
+
+  return (
+    <Section
+      id="portfolio"
+      eyebrow="Portfolio"
+      title="Ukázky realizací"
+      subtitle="Ukázka reálných zakázek a vzorků."
+    >
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+        {items.map((it, i) => (
+          <button
+            key={i}
+            type="button"
+            onClick={() => open(i)}
+            className="group relative rounded-2xl overflow-hidden border border-black/10 dark:border-white/10 focus:outline-none focus:ring-2 focus:ring-[var(--accent-1)]"
+            aria-label={`Otevřít náhled: ${it.label}`}
+          >
+            <img src={it.src} alt={it.label} className="w-full aspect-square object-cover transition-transform group-hover:scale-[1.02]" />
+            <div className="absolute bottom-0 left-0 right-0 p-3 text-xs text-[var(--muted)] bg-[var(--panel)]/80 backdrop-blur">
+              {it.label}
+            </div>
+          </button>
+        ))}
+      </div>
+
+      <Lightbox
+        open={state.open}
+        item={items[state.index]}
+        onClose={close}
+        onPrev={prev}
+        onNext={next}
+      />
+    </Section>
+  );
+};
+
+
+
 
 const ContactForm = () => {
   const inputBase =
@@ -395,13 +511,16 @@ export default function App() {
         </div>
       </Section>
 
-      <Section id="portfolio" eyebrow="Portfolio" title="Ukázky realizací" subtitle=" Ukázka reálných zakázek a vzorků.">
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-          {["Dárková krabička – gravura na víku", "Cedule na dveře", "Mapa hvězd – bříza", "Podtácky – sada 6 ks"].map((l, i) => (
-            <PortfolioItem key={i} label={l} />
-          ))}
-        </div>
-      </Section>
+      <PortfolioSection id="portfolio" eyebrow="Portfolio" title="Ukázky realizací" subtitle=" Ukázka reálných zakázek a vzorků.">
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+        {[
+          { src: pf1, label: "Magnetky – gravura do překližky" },
+          { src: pf2, label: "Podtácky - různé velikosti" },
+        ].map((item, i) => (
+          <PortfolioItem key={i} src={item.src} label={item.label} />
+        ))}
+      </div>
+    </PortfolioSection>
 
       <Section id="process" eyebrow="Jak to probíhá" title="Jednoduchý 4-krokový postup">
   <div className="grid md:grid-cols-4 gap-5">
