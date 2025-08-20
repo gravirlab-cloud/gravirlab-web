@@ -2,6 +2,7 @@
 import React from "react";
 import pf1 from './assets/magnetky.jpg';
 import pf2 from './assets/podtacky.jpg';
+import pf3 from './assets/wifi-stojanek.jpg';
 import { motion } from "framer-motion";
 import {
   Menu, X, Sparkles, Send, Mail, Phone, Clock, CheckCircle2,
@@ -329,6 +330,7 @@ const PortfolioSection = () => {
   const items = [
     { src: pf1, label: "Magnetky – gravura do překližky" },
     { src: pf2, label: "Podtácky – různé kusy" },
+    { src: pf3, label: "Destička s QR kódem pro připojení k WiFi" }
   ];
 
   const [state, setState] = React.useState({ open: false, index: 0 });
@@ -566,8 +568,9 @@ export default function App() {
           <div className="rounded-3xl border border-black/10 dark:border-white/10 bg-black/5 dark:bg-white/5 p-6">
             <h3 className="text-lg font-semibold text-[var(--text)]">Rychlé informace</h3>
             <ul className="mt-4 space-y-3 text-sm text-[var(--muted)]">
-              <li className="flex gap-3"><Clock className="h-4 w-4 text-[var(--accent-1)] mt-0.5" /> Dodání obvykle 3–7 pracovních dnů</li>
-              <li className="flex gap-3"><Palette className="h-4 w-4 text-[var(--accent-1)] mt-0.5" /> Podklady: SVG, PDF, AI, PNG (300 dpi+)</li>
+              <li className="flex gap-3"><Clock className="h-4 w-4 text-[var(--accent-1)] mt-0.5" /> Dodání obvykle 3–7 pracovních dnů.</li>
+              <li className="flex gap-3"><Palette className="h-4 w-4 text-[var(--accent-1)] mt-0.5" /> Podklady: SVG, PDF, AI, PNG (300 dpi+).</li>
+              <li className="flex gap-3"><Ruler className="h-4 w-4 text-[var(--accent-1)] mt-0.5" /> Maximální rozměr jedné věci je max 295x195mm.</li>
             </ul>
             <div className="mt-6">
             </div>
